@@ -25,11 +25,13 @@ dependencies {
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	
-	// تم تصحيحها إلى modImplementation لتشغيل الـ Client Environment بنجاح
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	// Fabric API للمشروع الأساسي
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+	
+	// سطر الحل: إدخال مكتبة Fabric API إلى بيئة العميل ليختفي خطأ HudRenderCallback
+	clientImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 }
 
 processResources {
@@ -47,6 +49,7 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
 	withSourcesJar()
+
 	sourceCompatibility = JavaVersion.VERSION_25
 	targetCompatibility = JavaVersion.VERSION_25
 }
