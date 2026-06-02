@@ -37,7 +37,7 @@ public class ExampleModClient implements ClientModInitializer {
             int minutes = (totalSeconds % 3600) / 60;
             int seconds = totalSeconds % 60;
 
-            // تنسيق الوقت المُنقذ (00:00:00)
+            // تنسيق الوقت (00:00:00)
             String timeDisplay = String.format("%02d:%02d:%02d", hours, minutes, seconds);
             
             // رسم النص أعلى اليسار باستخدام نظام الـ GuiGraphics الرسمي
